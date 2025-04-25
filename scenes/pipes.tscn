@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://gqsjehvjyqoh"]
+
+[ext_resource type="Script" uid="uid://y7ve2yph6thi" path="res://scenes/pipes.gd" id="1_f17p0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f71w0"]
+size = Vector2(48, 528)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f17p0"]
+size = Vector2(48, 528)
+
+[node name="Pipes" type="CharacterBody2D" groups=["deadly_group"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_f17p0")
+
+[node name="pipe" type="Polygon2D" parent="."]
+position = Vector2(-40, -576)
+color = Color(0, 0.45098, 0, 1)
+polygon = PackedVector2Array(24, -80, 24, 432, 72, 432, 72, 176, 72, -80)
+
+[node name="pipeEnd" type="Polygon2D" parent="."]
+position = Vector2(-161.143, -485.333)
+scale = Vector2(1.14286, 0.666667)
+color = Color(0, 0.262745, 0, 1)
+polygon = PackedVector2Array(120, 512, 176, 512, 176, 536, 120, 536)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, -392)
+shape = SubResource("RectangleShape2D_f71w0")
+
+[node name="pipe2" type="Polygon2D" parent="."]
+position = Vector2(-40, 224)
+color = Color(0, 0.45098, 0, 1)
+polygon = PackedVector2Array(24, -80, 24, 432, 72, 432, 72, -80)
+
+[node name="pipeEnd2" type="Polygon2D" parent="."]
+position = Vector2(-161.143, -216)
+scale = Vector2(1.14286, 0.666667)
+color = Color(0, 0.262745, 0, 1)
+polygon = PackedVector2Array(120, 516, 176, 516, 176, 540, 120, 540)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(7.99998, 392)
+shape = SubResource("RectangleShape2D_f17p0")

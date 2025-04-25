@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://bc50a76xjke8a"]
+
+[ext_resource type="Script" uid="uid://m7cp4vbx4r6u" path="res://scenes/game.gd" id="1_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://d2yvl3jivy5iq" path="res://scenes/bird.tscn" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://bay74mx8wx7rr" path="res://scenes/ground.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://gqsjehvjyqoh" path="res://scenes/pipes.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://xocvxcr3yoai" path="res://scenes/pipe_remover.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://6xyg040r516p" path="res://scenes/pipe_pass_detector.tscn" id="6_p57ef"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_lbhrr")
+pipeScene = ExtResource("3_lnu2h")
+
+[node name="Bird" parent="." instance=ExtResource("1_yqjtg")]
+position = Vector2(208, 272)
+collision_mask = 6
+
+[node name="Ground" parent="." instance=ExtResource("2_lnu2h")]
+position = Vector2(0, 576)
+collision_layer = 2
+collision_mask = 0
+
+[node name="Ceiling" parent="." instance=ExtResource("2_lnu2h")]
+position = Vector2(0, -120)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="PipeRemover" parent="." instance=ExtResource("5_iywne")]
+position = Vector2(-104, -40)
+
+[node name="Label" type="Label" parent="."]
+z_index = 445
+offset_left = 640.0
+offset_top = 560.0
+offset_right = 1144.0
+offset_bottom = 662.0
+theme_override_font_sizes/font_size = 74
+text = "0"
+horizontal_alignment = 2
+
+[node name="PipePassDetector" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(160, -32)
+
+[connection signal="increase_score" from="." to="." method="_on_increase_score"]
+[connection signal="death" from="Bird" to="." method="_on_bird_death"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="PipeRemover" to="." method="_on_pipe_remover_body_entered"]
+[connection signal="body_entered" from="PipePassDetector" to="." method="_on_pipe_pass_detector_body_entered"]

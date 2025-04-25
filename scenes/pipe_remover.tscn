@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://xocvxcr3yoai"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_bcn12"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ci0e"]
+size = Vector2(32, 456)
+
+[node name="PipeRemover" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-48, 324)
+scale = Vector2(32, 456)
+texture = SubResource("CanvasTexture_bcn12")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-48, 324)
+shape = SubResource("RectangleShape2D_5ci0e")

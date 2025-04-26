@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3op46ks7bete"]
+
+[ext_resource type="Script" uid="uid://chei0vycjvvv4" path="res://scripts/game_over.gd" id="1_xeevv"]
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_xeevv")
+
+[node name="Message" type="Label" parent="."]
+offset_left = 168.0
+offset_top = 128.0
+offset_right = 988.0
+offset_bottom = 335.0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 151
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="."]
+offset_left = 400.0
+offset_top = 344.0
+offset_right = 743.0
+offset_bottom = 469.0
+theme_override_font_sizes/font_size = 91
+text = "Score: 0"

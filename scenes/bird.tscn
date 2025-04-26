@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d2yvl3jivy5iq"]
 
-[ext_resource type="Script" uid="uid://dgilcxl3vsm52" path="res://scenes/character_body_2d.gd" id="1_kqhkv"]
+[ext_resource type="Script" uid="uid://dgilcxl3vsm52" path="res://scripts/bird.gd" id="1_kqhkv"]
 [ext_resource type="Texture2D" uid="uid://c1iilfn2gkpf4" path="res://gfx/kwakoPog.png" id="2_3po83"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3po83"]

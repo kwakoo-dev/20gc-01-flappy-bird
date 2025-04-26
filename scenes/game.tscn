@@ -1,18 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://bc50a76xjke8a"]
+[gd_scene load_steps=9 format=3 uid="uid://bc50a76xjke8a"]
 
-[ext_resource type="Script" uid="uid://m7cp4vbx4r6u" path="res://scenes/game.gd" id="1_lbhrr"]
+[ext_resource type="Script" uid="uid://m7cp4vbx4r6u" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://d2yvl3jivy5iq" path="res://scenes/bird.tscn" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://bay74mx8wx7rr" path="res://scenes/ground.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://gqsjehvjyqoh" path="res://scenes/pipes.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://xocvxcr3yoai" path="res://scenes/pipe_remover.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://6xyg040r516p" path="res://scenes/pipe_pass_detector.tscn" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://c3op46ks7bete" path="res://scenes/game_over.tscn" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://l6lsyxyd6te7" path="res://scenes/title_screen.tscn" id="8_gee14"]
 
 [node name="Game" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_lbhrr")
 pipeScene = ExtResource("3_lnu2h")
 
 [node name="Bird" parent="." instance=ExtResource("1_yqjtg")]
-position = Vector2(208, 272)
+position = Vector2(200, 250)
 collision_mask = 6
 
 [node name="Ground" parent="." instance=ExtResource("2_lnu2h")]
@@ -31,8 +34,9 @@ autostart = true
 [node name="PipeRemover" parent="." instance=ExtResource("5_iywne")]
 position = Vector2(-104, -40)
 
-[node name="Label" type="Label" parent="."]
-z_index = 445
+[node name="ScoreLabel" type="Label" parent="."]
+z_index = 100
+z_as_relative = false
 offset_left = 640.0
 offset_top = 560.0
 offset_right = 1144.0
@@ -43,6 +47,14 @@ horizontal_alignment = 2
 
 [node name="PipePassDetector" parent="." instance=ExtResource("6_p57ef")]
 position = Vector2(160, -32)
+
+[node name="SplashScreens" type="Node" parent="."]
+
+[node name="GameOver" parent="SplashScreens" instance=ExtResource("7_u5sy4")]
+visible = false
+z_index = 100
+
+[node name="TitleScreen" parent="SplashScreens" instance=ExtResource("8_gee14")]
 
 [connection signal="increase_score" from="." to="." method="_on_increase_score"]
 [connection signal="death" from="Bird" to="." method="_on_bird_death"]
